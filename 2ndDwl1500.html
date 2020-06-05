@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<LINK REL="SHORTCUT ICON" HREF="pic/logo.png" height="20px">
+<title>Meal Plans
+</title>
+<link href="fruitesStyle.css" type="text/css" rel="stylesheet">
+<link href="headerstyle.css" type="text/css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>.w3-animate-zoom {animation:animatezoom 0.6s}@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
+</style>
+</head>
+<body  >
+<nav class="navbar navbar" data-spy="affix" data-offset-top="40" style="  text-align:center; padding-top:14px;" >
+    <div class="navbar-header">
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			 <span style="background-color:black;" class="icon-bar"></span>
+        <span class="icon-bar" style="background-color:black;"></span>
+        <span class="icon-bar" style="background-color:black;"></span> 
+		</button>
+		<a class="navbar-brand"><img src="pic/logo.png"   style=" height:90px; width:150px; margin-top:-20%;margin-left:38%; "></a>
+<a class="navbar-brand" style="color:#239546; margin-top:-10%; margin-left:50%; ">stepToHealth</a>
+	</div>
+	
+	
+	<div class="collapse navbar-collapse js-navbar-collapse">
+		<ul class="nav navbar-nav navbar-right">
+		<li><a href="Home.html" style="color: #239546;  font-size:16px;"><b>Home</b></a></li>
+			
+			<li class="dropdown dropdown-large">
+				
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: black; font-size:16px;">Calculator <img src="pic/dropicon.png"height="20px" /></a>
+				
+				<ul class="dropdown-menu dropdown-menu-large row">
+					<li class="col-sm-2">
+						<ul>
+						
+							<li><img src="pic/c.png" height="70px;" style="margin-left:24%;"/><a href="calculator.html">Calorie Calculator</a></li>
+							</ul>
+							</li>
+							<li class="col-sm-3">
+						<ul>
+							<li> <img src="pic/h.png" height="70px;" style="margin-left:24%;" /><a href="heartrate.html">Heart Rate Calculator</a></li>
+                       		</ul>
+					</li>
+					
+							<li class="col-sm-2">
+						<ul>
+									<li> <img src="pic/fds.png" height="70px;" style="margin-left:20%;" /> <a href="bmi.html" >Body Mass Index</a></li>
+							
+						</ul>
+					</li>
+					<li class="col-sm-2">
+						<ul>
+							<li> <img src="pic/t.png" height="70px;" style="margin-left:24%;" /><br><a href="idealcalculator.html">Ideal Body Weight</a></li>
+							</ul>
+							</li>
+						<li class="col-sm-3">
+						<ul>
+							<li> <img src="pic/i.png" height="70px;" style="margin-left:24%;" /><a href="intensitycalculator.html">Measure Exercise Intensity</a></li>
+								</ul>
+					</li>
+					
+				</ul>
+				
+			</li>
+			<li class="dropdown dropdown-large">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: black; font-size:16px;">Meal Plans<img src="pic/dropicon.png"height="20px" /></a>
+				
+				<ul class="dropdown-menu dropdown-menu-large row">
+					<li class="col-sm-4">
+						<ul>
+							<a href="mealplan.html"><li class="dropdown-header">Daibetes Meal Plan</li></a>
+						<li class="divider"></li>
+							
+							<li><a href="DietForDiabities.html">7 Day 1200 calorie</a></li>
+							<li class="divider"></li>
+							
+                            <li><a href="DietForDiabities1500.html">7 Day 1500 calorie</a></li>
+							<li class="divider"></li>
+							
+                            <li><a href="DietForDiabities2000.html">7 Day 2000 calorie</a></li>
+							
+							
+													</ul>
+					</li>
+					
+					<li class="col-sm-4">
+						<ul>
+							<a href="mealplan.html"><li class="dropdown-header">Blood Pressure Meal Plan</li></a>
+						
+						<li class="divider"></li>
+							
+							<li><a href="DietForBP.html">7 Day 1200 calorie</a></li><li class="divider"></li>
+							
+							<li><a href="DietForBP1500.html">7 Day 1500 calorie</a></li><li class="divider"></li>
+							
+							<li><a href="DietForBP2000.html">7 Day 2000 calorie</a></li>  
+							                          
+							
+						</ul>
+					</li>
+					<li class="col-sm-4">
+						<ul>
+				<a href="mealplan.html"><li class="dropdown-header"> Simple Meal Plans</li></a>
+				<li class="divider"></li>
+
+							 <li><a href="DietForWeightLose.html">7 Day 1200 calorie</a></li><li class="divider"></li>
+							
+							<li><a href="DietForWeightLose1500.html">7 Day 1500 calorie</a></li><li class="divider"></li>
+							
+							<li><a href="DietForWeightLose2000.html">7 Day 2000 calorie</a></li>
+								
+						</ul>
+					</li>
+				</ul>
+				
+			</li>
+			<li class="dropdown dropdown-large">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: black; font-size:16px;">Organic Fact<img src="pic/dropicon.png"height="20px" /></a>
+		
+				<ul class="dropdown-menu dropdown-menu-large row">
+					<li class="col-sm-3">
+						<ul>
+							<a href="foodinfo.html" ><li class="dropdown-header">Organic Facts</li></a>	
+								<li class="divider"></li>
+						
+							<li><a href="glutenFree.html">Gluten Free Foods</a></li>
+                            <li><a href="vege list.html">Cruciferous Vegetables</a></li>
+                            <li><a href="Peanutbutter.html">Peanut Butter</a></li>
+							<li><a href="bittermelon.html">Bitter Melon</a></li>
+							<li><a href="coconut.html">Coconut</a></li>
+							<li><a href="cream.html">Cream</a></li>
+							<li><a href="whitepapervsblackpaper.html">Black Pepper</a></li>
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<a href="page2.html"><li class="dropdown-header">Organic Facts</li></a>	
+								<li class="divider"></li>
+						
+							<li><a href="vitamina.html">Vitamin</a></li>
+							<li><a href="vitaminD.html">Vitamin D</a></li>
+							<li><a href="omega3.html">omega3</a></li>                            
+							<li><a href="romanelettuce.html">Romaine Lettuce</a></li>							
+						<li><a href="greenTea.html">Green Tea</a></li>							
+			<li><a href="borageTea.html">Borage Tea</a></li>							
+			<li><a href="whitepapervsblackpaper.html">White Pepper</a></li>
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+						<a href="page3.html"><li class="dropdown-header">Organic Facts</li></a>
+							<li class="divider"></li>
+						
+							
+															<li><a href="banana.html">Banana</a></li>
+								<li><a href="apple.html">Apple</a></li>
+								<li><a href="pomegrante.html">Pomegrantes</a></li>
+								<li><a href="papaya.html">Papaya</a></li>          
+	<li><a href="watermelon.html">Watermelon</a></li>                         
+							
+	<li><a href="apricot.html">Apricot</a></li> 
+
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+															<li><a href="chocolate milk.html">Chocolate Milk</a></li>
+								<li><a href="milk.html">Milk</a></li>
+								<li><a href="fish.html">Fish</a></li>
+								<li><a href="licorice.html">Licorice</a></li>          
+	<li><a href="goldenberies.html">Golden Berries</a></li>                         
+							<li><a href="onion.html">Onion</a></li>
+	<li><a href="potatoes.html">Potato</a></li> 
+						<li><a href="whitepapervsblackpaper.html">Red Pepper</a></li>							
+
+						</ul>
+					</li>
+				</ul>
+				
+			</li>
+			<li><a href="recipe.html" style="color: black; font-size:16px;">Recipes</a></li>
+		<li class="dropdown dropdown-large">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: black; font-size:16px;">Fitness<img src="pic/dropicon.png"height="20px" /></a>
+				
+				<ul class="dropdown-menu dropdown-menu-large row">
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">5 Most Effective Exercises</li>
+							<li><a href="walking.html">1. Walking</a></li>
+                            <li><a href="Interval Training.html">2. Interval Training</a></li>
+                            <li><a href="Lunges.html">3. Lunges</a></li>
+							<li><a href="Push-Ups.html">4. Push-Ups</a></li>
+							<li><a href='Bent-Over Row.html'>5. Bent-Over Row</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Exercise</li>
+                            
+							<li><a href="exercisetypes.html">Moderate Exercise</a></li>
+							<li><a href="vigorus.html">Vigorus Exercise</a></li>
+							
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header"> Tips for Fitness Success</li>
+							<li><a href="Right Foods.html">1. Eat the Right Foods and Portion Each Meal</a></li>
+							<li><a href="Food Intake.html">2. Keep Track of Calories and Food Intake Per Day</a></li>
+							<li><a href="Get Sleep.html">3. Be Sure to Get Sleep</a></li>                            
+							<li><a href="Stay Motivated.html">4. Stay Motivated</a></li>		
+                            <li><a href="Exercise Daily.html">5. Exercise Daily</a></li>							
+							<li class="dropdown-header">Exercise</li>
+                            
+			<li>                  <a href="exerciseTools.html">Home Exercise Tools</a></li>
+				              <li>    <a href="exercise.html"> Exercise Videos</a></li>
+											
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">Things for Your Health Today</li>
+                           <li><a href="EatFruit.html">1.  Ditch the Juice, Eat the Fruit</a></li>
+						<li><a href="Socialize.html">2. Socialize</a></li>
+						<li><a href="Eatslowly.html">3. Eat slowly</a></li>
+						<li><a href="TakeTimeOff.html">4. Take Time Off</a></li>
+						<li><a href="WatchFat.html">5. Watch the Fat</a></li>
+						<li><a href="ManageStress.html">6.Manage Your Stress</a></li>						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">Exercise Tools</li>                            
+                            <div id="womenCollection" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                                <div class="item active">
+                                    <a href="#"><img src="pic/tool5.jpg" class="img-responsive" width="100%" height="150" alt="product 1"></a>
+                                    <h4><small>Adjustable Bench</small></h4>                                        
+                                    <button class="btn btn-primary" type="button">$79.99</button> <button href="#" class="btn btn-default" type="button"><i class="glyphicon glyphicon-earphone"></i> call@ 344556701</button>       
+                                </div><!-- End Item -->
+                                <div class="item">
+                                    <a href="#"><img src="pic/tool6.jpg" class="img-responsive" width="100%" height="150" alt="product 2"></a>
+                                    <h4><small>Upright Bike</small></h4>                                        
+                                    <button class="btn btn-primary" type="button">$249.99</button> <button href="#" class="btn btn-default" type="button"><i class="glyphicon glyphicon-earphone"></i> call@ 344556701</button>        
+                                </div><!-- End Item -->
+                                <div class="item">
+                                    <a href="#"><img src="pic/tool23.jpg" class="img-responsive" width="100%" height="150" alt="product 3"></a>
+                                    <h4><small>Printed Yoga Mat 1/2-inch (72”x24”) with Carrying Strap</small></h4>                                        
+                                    <button class="btn btn-primary" type="button">$17.56</button> <button href="#" class="btn btn-default" type="button"><i class="glyphicon glyphicon-earphone"></i> call@ 344556701</button>      
+                                </div><!-- End Item -->                                
+                              </div><!-- End Carousel Inner -->
+                              <!-- Controls -->
+                              <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="right carousel-control" href="#womenCollection" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div><!-- /.carousel -->
+                            <li class="divider"></li>
+                            </ul>
+					</li>
+						</ul>
+					</li>
+			<li><a   href="Home.html#contact-us" style="color: black; font-size:16px;"> Contact Us</a></li>
+           	
+		</ul>
+		
+	</div><!-- /.nav-collapse -->
+</nav><!--detail diet -->
+<div class="container">
+<h1><b>The Best 7-Day Weight-Loss Meal Plan</b> 1,500 Calories</h1>
+<div class="row">
+<div class="col-lg-5 col-sm-5 col-sx-5 col-md-5">
+		 <h3 style="color:#b1c903;" >Diet Plan</h3>
+		 </br>
+		 <h5>This healthy 1,500-calorie meal plan makes it easy to balance your weight.</h5>
+		 <p class="lead">Eating a low-calorie, low-carb diet can help you lose weight. Research suggests that eating a low-calorie, low-carb diet can help you lose weight. And while popular low-carb diets, like the ketogenic diet and Atkins diet call for super-low carb limits, you don't actually need to go that low in order to lose the weight. In fact, eating too few carbs can make weight loss harder, as you miss out on key nutrients (like fiber from whole grains, beans, fruits and vegetables) that can help you to feel full and satisfied on fewer calories. In this 7-day low-carb meal plan, we keep the carbs low, but not so low that you'll miss out on those important nutrients. At 1,500 daily calories, this low-carb meal plan will help most people lose a healthy 1 to 2 pounds per week.</p>
+		 </div>
+
+		 <div class="col-lg-5 col-sm-5 col-sx-5 col-md-5" >
+<img  src="pic/mealplan1500_630px.png" class="img-fluid" alt="Responsive image" style="max-width: 100%; and height: auto;height:500px; margin-left:3%; margin-top:20%; width:600px;"></div>
+  
+
+</div>
+</div>
+
+<!--day wise diet plan -->
+<!--buttons-->
+<div class="container"  style="margin-top:10px;">
+			<div class="container" id="services " >
+				<h1  style="color:#8cc640; margin-left:1%;  margin-bottom:5%;"><b>7-Day Diet Plan</b></h1>	
+					
+<div class="tab">
+				
+ <a href="DietForDiabities.html"> <button style="border-radius: 50%; background-color:#8cc640; padding: 10px 24px;font-size: 16px;"></b>Day1</button> </a>
+ <a href="2ndDwl.html"> <button  style="border-radius: 50%; background-color:#8cc640; padding: 10px 24px;font-size: 16px;"> </b>Day2</button></a>
+<a href="3rdDwl.html">  <button  style="border-radius: 50%; background-color:#8cc640; padding: 10px 24px;font-size: 16px;"></b>Day3</button></a>
+<a href="4thDwl.html">   <button  style="border-radius: 50%; background-color:#8cc640; padding: 10px 24px;font-size: 16px;"></b>Day4</button></a>
+ <a href="5thDwl.html">   <button  style="border-radius: 50%; background-color:#8cc640; padding: 10px 24px;font-size: 16px;"></b>Day5</button></a>
+ <a href="6thDwl.html">   <button  style="border-radius: 50%; background-color:#8cc640; padding: 10px 24px;font-size: 16px;"></b>Day6</button></a>
+ <a href="7thDwl.html">   <button style="border-radius: 50%; background-color:#8cc640; padding: 10px 24px;font-size: 16px;"></b>Day7</button></a>
+</div>
+<div id="Day1" class="tabcontent" >
+<div class="container" >
+<div class="row">
+<div class="col-lg-5 col-sm-5 col-sx-5 col-md-5">
+  <h3 style="color:white;">Day2</h3>
+  
+  <p class="lead"> <h3>Breakfast (299 calories, 34 g carbohydrates)</h3>
+1/2 cup whole-milk Greek yogurt </br>
+1 Tbsp. shredded unsweetened coconut </br>
+1 Tbsp. slivered almonds </br>
+Top yogurt with coconut and almonds. </br>
+1 medium grapefruit, halved and sectioned
+
+<h3>A.M. Snack (78 calories, 21 g carbohydrates)</h3>
+ 3/4 cup grapes
+
+<h3>Lunch (365 calories, 34 g carbohydrates)</h3>
+1 serving (2/3 cup) Crunchy Confetti Tuna Salad </br>
+1 medium apple  </br>
+1 oz. Cheddar cheese
+
+<h3>P.M. Snack (116 calories, 4 g carbohydrates)</h3>
+15 almonds
+
+
+<h3>Dinner (337 calories, 32 g carbohydrates)</h3> 
+1 serving (1 1/4 cups) Traditional Greek Salad </br>
+1/4 cup hummus, sprinkled with dried oregano to taste </br>
+1 small whole-wheat pita round </br></br></br>
+Daily Totals: 1,495 calories, 53 g protein, 125 g carbohydrates, 22 g fiber, 63 g fat, 1,515 mg sodium.
+</div>
+<div  class="col-lg-5 col-sm-5 col-sx-5 col-md-5">
+<div class="w3-container w3-center  w3-animate-zoom"">
+<img src="pic/2nddaywl.jpg"  class="img-circle" class="img-fluid" alt="Responsive image" style="max-width: 100%; and height: auto;height:600px; width:600px; margin-top:20px;"> </div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!--3rd-->
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+	
+	
+	
+		 <!--Footer--> 
+		<div style=" margin-top:4%; background:linear-gradient(rgba(14, 14, 14,0.90),rgba(14, 14, 14,0.90)), url('pic/footer.jpg'); background-repeat:no-repeat;background-size:cover;">
+    
+	<div class="container" >
+    
+	  
+       
+	  <div class="row"  style=" background:transparent;text-align:center; border-top:1px solid white; margin-top:2%;">
+  
+	 <!--First column-->
+	 
+    <div class="col-lg-3 col-sm-3 col-sx-3 col-md-3  text-center ">
+                           <h6 class="text-uppercase font-weight-bold" style="color:#b1c903;"><strong>stepToHealth</strong></h6>
+                      <hr  style="width: 60px;">
+                      <p style="color:white; text-align:left;">stepToHealth provides you a better life style,make the facts appropiate that inspire your life.Here is a balance in your diet, your exercise and your health. We provide You a single platform where you can look all your health related necessities. </p>
+                      </div>
+                     
+      <!--/.First column-->
+      
+                  <!--Second column-->
+                  <div class="col-lg-3 col-sm-3 col-sx-3 col-md-3  stylish-color-dark" style="color:white;">
+                      <h6 class="text-uppercase font-weight-bold" style="color:#b1c903;"><strong>services</strong></h6>
+                      <hr style="width: 60px;color:#b1c903;">
+                      <p> <a href="recipes.php" style="color:white;">Recipes</a></p>
+                      <p><a href="exercise.php" style="color:white;">Exercise</a></p>
+                      <p><a href="foodinfo.php" style="color:white;">Food Information</a></p>
+                     
+                  </div>
+                  <!--/.Second column-->
+      
+                  <!--Third column-->
+                  <div class="col-lg-3 col-sm-3 col-sx-3 col-md-3 " >
+                      <h6 class="text-uppercase font-weight-bold mb-4 mt-3 " style="color:#b1c903;"><strong>Useful Calculators</strong></h6>
+                      <hr style="width: 60px;color:#b1c903;">
+                      <p><a href="calculator.php" style="color:white;">Calorie Calculator</a></p>
+                      <p><a href="bmi.php" style="color:white;">Body Mass Index(BMI)</a></p>
+                      <p><a href="Heartrate.php" style="color:white;">Heart Rate Calculator</a></p>
+                       <p><a href="weightloss.php" style="color:white;">Weight Loss Calculator</a></p>
+                      
+                  </div>
+                  <!--/.Third column-->
+      
+                  <!--Fourth column-->
+                  <div class="col-lg-3 col-sm-3 col-sx-3 col-md-3">
+                      <h6 class="text-uppercase font-weight-bold" style="color:#b1c903;"><strong>Contact</strong></h6>
+                      <hr  style="width: 60px;color:#b1c903;">
+                      <p style="color:white;"><span class="glyphicon glyphicon-phone-alt" style="color:#b1c903;"></span> &nbsp + 01 234 567 88</p>
+                      <p style="color:white;"><span class="	glyphicon glyphicon-envelope" style="color:#b1c903;"></span>&nbsp  + 01 234 567 89</p>
+					 <a href="https://plus.google.com/u/0/104419626603050691626">  <i class="fa fa-google-plus" style="font-size:20px;color:white;  margin-top:3%; margin-bottom:2%;"></i></a>
+<a href="https://www.facebook.com/SteptoHealth-287798741993019/?modal=admin_todo_tour"><i class="fa fa-facebook" style="font-size:20px;color:white; margin-left:4%;"></i></a>
+<a href="https://twitter.com/"><i class="fa fa-twitter" style="font-size:20px;color:white; margin-left:4%;"></i></a>
+<a href=" https://www.youtube.com/channel/UCJQgiVD2ra4i8tWhOCRyKyA?view_as=subscriber"><i class="fa fa-youtube" style="font-size:20px;color:white; margin-left:4%;"></i></a>
+ <a href="adminlogin.php"> <i class="fa fa-sign-in" style="font-size:19px;color:white; margin-left:4%; "></i></a>
+    
+                  </div>
+     
+	  
+      </div>
+    </div>
+	
+	
+	</div>
+        
+		
+
+   <script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery-3.1.0.js"></script>
+<script src="js/script.js"></script> 
+</body>
+</html>

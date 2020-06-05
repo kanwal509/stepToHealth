@@ -1,0 +1,974 @@
+
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<LINK REL="SHORTCUT ICON" HREF="pic/logo.png" height="20px">
+<title>Calculators
+</title>
+<link href="styleproject.css" type="text/css" rel="stylesheet">
+<link href="fruitesStyle.css" type="text/css" rel="stylesheet">
+<link href="headerstyle.css" type="text/css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script Language='JavaScript'>
+
+function sn(num) {
+
+   num=num.toString();
+
+
+   var len = num.length;
+   var rnum = "";
+   var test = "";
+   var j = 0;
+
+   var b = num.substring(0,1);
+   if(b == "-") {
+      rnum = "-";
+   }
+
+   for(i = 0; i <= len; i++) {
+
+      b = num.substring(i,i+1);
+
+      if(b == "0" || b == "1" || b == "2" || b == "3" || b == "4" || b == "5" || b == "6" || b == "7" || b == "8" || b == "9" || b == ".") {
+         rnum = rnum + "" + b;
+
+      }
+
+   }
+
+   if(rnum == "" || rnum == "-") {
+      rnum = 0;
+   }
+
+   rnum = Number(rnum);
+
+   return rnum;
+
+}
+
+
+
+function fns(num, places, comma, type, show) {
+
+    var sym_1 = "$";
+    var sym_2 = ""; 
+
+    var isNeg=0;
+
+    if(num < 0) {
+       num=num*-1;
+       isNeg=1;
+    }
+
+    var myDecFact = 1;
+    var myPlaces = 0;
+    var myZeros = "";
+    while(myPlaces < places) {
+       myDecFact = myDecFact * 10;
+       myPlaces = Number(myPlaces) + Number(1);
+       myZeros = myZeros + "0";
+    }
+    
+	onum=Math.round(num*myDecFact)/myDecFact;
+		
+	integer=Math.floor(onum);
+
+	if (Math.ceil(onum) == integer) {
+		decimal=myZeros;
+	} else{
+		decimal=Math.round((onum-integer)* myDecFact)
+	}
+	decimal=decimal.toString();
+	if (decimal.length<places) {
+        fillZeroes = places - decimal.length;
+	   for (z=0;z<fillZeroes;z++) {
+        decimal="0"+decimal;
+        }
+     }
+
+   if(places > 0) {
+      decimal = "." + decimal;
+   }
+
+   if(comma == 1) {
+	integer=integer.toString();
+	var tmpnum="";
+	var tmpinteger="";
+	var y=0;
+
+	for (x=integer.length;x>0;x--) {
+		tmpnum=tmpnum+integer.charAt(x-1);
+		y=y+1;
+		if (y==3 & x>1) {
+			tmpnum=tmpnum+",";
+			y=0;
+		}
+	}
+
+	for (x=tmpnum.length;x>0;x--) {
+		tmpinteger=tmpinteger+tmpnum.charAt(x-1);
+	}
+
+
+	finNum=tmpinteger+""+decimal;
+   } else {
+      finNum=integer+""+decimal;
+   }
+
+    if(isNeg == 1) {
+       if(type == 1 && show == 1) {
+          finNum = "-" + sym_1 + "" + finNum + "" + sym_2;
+       } else {
+          finNum = "-" + finNum;
+       }
+    } else {
+       if(show == 1) {
+          if(type == 1) {
+             finNum = sym_1 + "" + finNum + "" + sym_2;
+          } else
+          if(type == 2) {
+             finNum = finNum + "%";
+          }
+
+       }
+
+    }
+
+	return finNum;
+}
+
+
+function computeForm2(form) {
+
+
+   var Vage = sn(document.calc2.age.value);
+   var Vweight = sn(document.calc2.weight.value);
+ var Vinches = sn(document.calc2.inches.value);
+
+   if(Vage <= 18) {
+      alert("Please enter your  valid age.");
+      document.calc2.age.focus();
+   } else
+   if(Vweight <= 18 ) {
+	  
+      alert("Please enter your valid weight.");
+      document.calc2.weight.focus();
+}
+ if(Vweight >= 200 ){
+	 alert("Please enter your valid weight.");
+      document.calc2.weight.focus();
+ }
+ if(Vinches <= 90 ){
+	 alert("Please enter your valid height.");
+      document.calc2.weight.focus();
+ }
+ if(Vinches >= 250 ){
+	 alert("Please enter your valid height.");
+      document.calc2.weight.focus();
+ }
+ else {
+
+      //INPUT VALUES
+      var Vgender = document.calc2.gender.selectedIndex;
+      
+
+      var VfatPerc = sn(document.calc2.fatPerc.value);
+      if(VfatPerc >= 1) {
+         VfatPerc /= 100;
+      }
+
+      //CONVERT HEIGHT TO CM
+      var VinchesTall = Vinches;
+      var VcmHeight = VinchesTall * 1;
+
+      //CONVERT WEIGHT TO KG
+      var VkgWeight = Vweight;
+
+      var Vbmr = 0;
+	  
+      if(VfatPerc == 0) {
+
+         if(Vgender == 0) {
+            Vbmr = 655 + (9.6 * VkgWeight) + (1.8 * VcmHeight) - (4.7 * Vage);
+         } else {
+            Vbmr = 66 + (13.7 * VkgWeight) + (5 * VcmHeight) - (6.8 * Vage);
+         }
+
+      } else {
+
+         var VleanMass = (1 - VfatPerc) * VkgWeight;
+
+         Vbmr = 370 + (21.6 * VleanMass);
+      }
+
+      var VactivityLevel = document.calc2.activityLevel.options[document.calc2.activityLevel.selectedIndex].value;
+
+      var Vtdee = Vbmr * VactivityLevel;
+
+      document.calc2.tdee.value = Math.round(Vtdee);
+
+
+
+      var Vpounds = sn(document.calc2.pounds.value);
+      var VloseGain = document.calc2.loseGain.selectedIndex;
+
+      var VperiodType = document.calc2.periodType.selectedIndex;
+      var VdaysPerPeriod = document.calc2.periodType.options[document.calc2.periodType.selectedIndex].value;
+      var VperiodNum = sn(document.calc2.periodNum.value);
+
+      var VtotalDays = VdaysPerPeriod * VperiodNum;
+      var VtotalCalories = Vpounds * 3500 * 2.2;
+      var VdailyCalChange = 0;
+      var Vnewtdee = 0;
+
+      if(Vpounds > 0 && VperiodNum > 0) {
+
+         VdailyCalChange = VtotalCalories / VtotalDays;
+
+         if(document.calc2.loseGain.selectedIndex == 0) {
+            Vnewtdee = Vtdee - VdailyCalChange;
+      var Vmaintaintdee = Vbmr * VactivityLevel * (Vweight - Vpounds) / Vweight;
+      document.calc2.maintaintdee.value = Math.round(Vmaintaintdee);
+			
+         } else {
+            Vnewtdee = Vtdee + VdailyCalChange;
+
+      var Vmaintaintdee = Vbmr * VactivityLevel * (Vweight + Vpounds) / Vweight;
+      document.calc2.maintaintdee.value = Math.round(Vmaintaintdee);
+
+         }
+
+         if(VdailyCalChange > 3000) {
+            document.calc2.newtdee.value = "Unsafe";
+         } else {
+            document.calc2.newtdee.value = Math.round(Vnewtdee);
+         }
+
+      } else {
+
+         document.calc2.newtdee.value = "";
+
+      }
+
+      var VperiodText = "";
+
+      if(VperiodType == 0) {
+         VperiodText = "day";
+      } else
+      if(VperiodType == 1) {
+         VperiodText = "week";
+      } else
+      if(VperiodType == 2) {
+         VperiodText = "month";
+      } else
+      if(VperiodType == 3) {
+         VperiodText = "year";
+      }
+
+      if(VperiodNum > 1) {
+         VperiodText = VperiodText + "s";
+      }
+
+      var VloseGainText = "";
+      if(VloseGain == 0) {
+         VloseGainText = "lose";
+      } else {
+         VloseGainText = "gain";
+      }
+
+      var VpoundText = "";
+      if(Vpounds == 1) {
+         VpoundText = "kg";
+      } else {
+         VpoundText = "kgs";
+      }
+
+      var VchangeText = "";
+      if(VloseGain == 0) {
+         VchangeText = "reduce";
+      } else {
+         VchangeText = "increase";
+      }
+
+      var Vsummary = "";
+
+      if(VdailyCalChange > 3000) {
+
+         Vsummary += "The entered pounds and time goal result in an unsafe level of calorie changes. ";
+         Vsummary += "Please either increase the time goal, or reduce the change in weight goal.";
+
+      } else
+      if(Vpounds > 0 && VperiodNum > 0) {
+
+         Vsummary += "In order to " + VloseGainText + " " + Vpounds + " " + VpoundText + " in";
+         Vsummary += " " + VperiodNum + " " + VperiodText + ", you will need ";
+         Vsummary += "to " + VchangeText + " your daily calorie intake from your ";
+         Vsummary += "normal maintenance level of " + Math.round(Vtdee) + " calories per day, ";
+         Vsummary += "down to " + Math.round(Vnewtdee) + " calories per day, or <a href='https://www.calculators.org/health/calorie-burn-rate.php'>exercise more</a> to boost your calorie burn rate by about " + Math.round(VdailyCalChange) + " calories per day. A calorie differential of 500 calories a day is equivalent to a 2 kg per month change in weight.";
+
+      } else {
+
+         Vsummary = "";
+
+      }
+
+      var v_summary_cell = document.getElementById("summary2");
+      v_summary_cell.innerHTML = "<font face='arial'><strong>Summary:</strong> " + Vsummary + "</font>";
+
+   }
+}
+
+
+</script>
+<style>
+
+   .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+   .mega-dropdown {
+  position: static !important;
+  
+}
+ 
+ 
+</style>
+
+</head>
+<body id="body">
+
+
+
+ 
+	
+<!--top-->
+<div style="background:url('pic/hlllll.jpg'); background-repeat:no-repeat;background-size:cover;height:450px;">
+ <nav class="navbar navbar" data-spy="affix" data-offset-top="40" style="  text-align:center; padding-top:14px;" >
+    <div class="navbar-header">
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			 <span style="background-color:black;" class="icon-bar"></span>
+        <span class="icon-bar" style="background-color:black;"></span>
+        <span class="icon-bar" style="background-color:black;"></span> 
+		</button>
+		<a class="navbar-brand"><img src="pic/logo.png"   style=" height:90px; width:150px; margin-top:-20%;margin-left:38%; "></a>
+<a class="navbar-brand" style="color:#239546; margin-top:-10%; margin-left:50%; ">stepToHealth</a>
+	</div>
+	
+	
+	<div class="collapse navbar-collapse js-navbar-collapse">
+		<ul class="nav navbar-nav navbar-right">
+		<li><a href="Home.php" style="color:black;  font-size:16px;">Home</a></li>
+			
+			<li class="dropdown dropdown-large">
+				
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#239546; font-size:16px;"><b>Calculator</b> <img src="pic/dropicon.png"height="20px" /></a>
+				
+				<ul class="dropdown-menu dropdown-menu-large row">
+					<li class="col-sm-2">
+						<ul>
+						
+							<li><img src="pic/c.png" height="70px;" style="margin-left:24%;"/><a href="calculator.php">Calorie Calculator</a></li>
+							</ul>
+							</li>
+							<li class="col-sm-2">
+						<ul>
+							<li> <img src="pic/h.png" height="70px;" style="margin-left:24%;" /><a href="heartrate.php">Heart Rate Calculator</a></li>
+                       		</ul>
+					</li>
+					<li class="col-sm-2">
+						<ul>
+							<li> <img src="pic/w.png" height="70px;" style="margin-left:24%;" /><a href="weightloss.php">Weight Loss Calculator</a></li>
+							</ul>
+							</li>
+							<li class="col-sm-2">
+						<ul>
+									<li> <img src="pic/fds.png" height="70px;" style="margin-left:20%;" /> <a href="bmi.php" >Body Mass Index</a></li>
+							
+						</ul>
+					</li>
+					<li class="col-sm-2">
+						<ul>
+							<li> <img src="pic/t.png" height="70px;" style="margin-left:24%;" /><br><a href="idealcalculator.php">Ideal Body Weight</a></li>
+							</ul>
+							</li>
+						<li class="col-sm-2">
+						<ul>
+							<li> <img src="pic/i.png" height="70px;" style="margin-left:24%;" /><a href="intensitycalculator.php">Measure Exercise Intensity</a></li>
+								</ul>
+					</li>
+					
+				</ul>
+				
+			</li>
+			<li class="dropdown dropdown-large">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:black; font-size:16px;">Meal Plans<img src="pic/dropicon.png"height="20px" /></a>
+				
+				<ul class="dropdown-menu dropdown-menu-large row">
+					<li class="col-sm-4">
+						<ul>
+							<a href="mealplan.php"><li class="dropdown-header">Daibetes Meal Plan</li></a>
+						<li class="divider"></li>
+							
+							<li><a href="DietForDiabities.php">7 Day 1200 calorie</a></li>
+							<li class="divider"></li>
+							
+                            <li><a href="DietForDiabities1500.php">7 Day 1500 calorie</a></li>
+							<li class="divider"></li>
+							
+                            <li><a href="DietForDiabities2000.php">7 Day 2000 calorie</a></li>
+							
+							
+													</ul>
+					</li>
+					
+					<li class="col-sm-4">
+						<ul>
+							<a href="mealplan.php"><li class="dropdown-header">Blood Pressure Meal Plan</li></a>
+						
+						<li class="divider"></li>
+							
+							<li><a href="DietForBP.php">7 Day 1200 calorie</a></li><li class="divider"></li>
+							
+							<li><a href="DietForBP1500.php">7 Day 1500 calorie</a></li><li class="divider"></li>
+							
+							<li><a href="DietForBP2000.php">7 Day 2000 calorie</a></li>  
+							                          
+							
+						</ul>
+					</li>
+					<li class="col-sm-4">
+						<ul>
+				<a href="mealplan.php"><li class="dropdown-header"> Simple Meal Plans</li></a>
+				<li class="divider"></li>
+
+							 <li><a href="DietForWeightLose.php">7 Day 1200 calorie</a></li><li class="divider"></li>
+							
+							<li><a href="DietForWeightLose1500.php">7 Day 1500 calorie</a></li><li class="divider"></li>
+							
+							<li><a href="DietForWeightLose2000.php">7 Day 2000 calorie</a></li>
+								
+						</ul>
+					</li>
+				</ul>
+				
+			</li>
+			<li class="dropdown dropdown-large">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:black; font-size:16px;">Organic Fact<img src="pic/dropicon.png"height="20px" /></a>
+		
+				<ul class="dropdown-menu dropdown-menu-large row">
+					<li class="col-sm-3">
+						<ul>
+							<a href="foodinfo.php" ><li class="dropdown-header">Organic Facts</li></a>	
+								<li class="divider"></li>
+						
+							<li><a href="glutenFree.php">Gluten Free Foods</a></li>
+                            <li><a href="vege list.php">Cruciferous Vegetables</a></li>
+                            <li><a href="Peanutbutter.php">Peanut Butter</a></li>
+							<li><a href="bittermelon.php">Bitter Melon</a></li>
+							<li><a href="coconut.php">Coconut</a></li>
+							<li><a href="cream.php">Cream</a></li>
+							<li><a href="whitepapervsblackpaper.php">Black Pepper</a></li>
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<a href="page2.php"><li class="dropdown-header">Organic Facts</li></a>	
+								<li class="divider"></li>
+						
+							<li><a href="vitamina.php">Vitamin</a></li>
+							<li><a href="vitaminD.php">Vitamin D</a></li>
+							<li><a href="omega3.php">omega3</a></li>                            
+							<li><a href="romanelettuce.php">Romaine Lettuce</a></li>							
+						<li><a href="greenTea.php">Green Tea</a></li>							
+			<li><a href="borageTea.php">Borage Tea</a></li>							
+			<li><a href="whitepapervsblackpaper.php">White Pepper</a></li>
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+						<a href="page3.php"><li class="dropdown-header">Organic Facts</li></a>
+							<li class="divider"></li>
+						
+							
+															<li><a href="banana.php">Banana</a></li>
+								<li><a href="apple.php">Apple</a></li>
+								<li><a href="pomegrante.php">Pomegrantes</a></li>
+								<li><a href="papaya.php">Papaya</a></li>          
+	<li><a href="watermelon.php">Watermelon</a></li>                         
+							
+	<li><a href="apricot.php">Apricot</a></li> 
+
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+															<li><a href="chocolate milk.php">Chocolate Milk</a></li>
+								<li><a href="milk.php">Milk</a></li>
+								<li><a href="fish.php">Fish</a></li>
+								<li><a href="licorice.php">Licorice</a></li>          
+	<li><a href="goldenberies.php">Golden Berries</a></li>                         
+							<li><a href="onion.php">Onion</a></li>
+	<li><a href="potatoes.php">Potato</a></li> 
+						<li><a href="whitepapervsblackpaper.php">Red Pepper</a></li>							
+
+						</ul>
+					</li>
+				</ul>
+				
+			</li>
+			<li><a href="recipe.php" style="color: black; font-size:16px;">Recipes</a></li>
+		<li class="dropdown dropdown-large">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: black; font-size:16px;">Fitness<img src="pic/dropicon.png"height="20px" /></a>
+				
+				<ul class="dropdown-menu dropdown-menu-large row">
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">5 Most Effective Exercises</li>
+							<li><a href="walking.php">1. Walking</a></li>
+                            <li><a href="Interval Training.php">2. Interval Training</a></li>
+                            <li><a href="Lunges.php">3. Lunges</a></li>
+							<li><a href="Push-Ups.php">4. Push-Ups</a></li>
+							<li><a href='Bent-Over Row.php'>5. Bent-Over Row</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Exercise</li>
+                            
+							<li><a href="exercisetypes.php">Moderate Exercise</a></li>
+							<li><a href="vigorus.php">Vigorus Exercise</a></li>
+							
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header"> Tips for Fitness Success</li>
+							<li><a href="Right Foods.php">1. Eat the Right Foods and Portion Each Meal</a></li>
+							<li><a href="Food Intake.php">2. Keep Track of Calories and Food Intake Per Day</a></li>
+							<li><a href="Get Sleep.php">3. Be Sure to Get Sleep</a></li>                            
+							<li><a href="Stay Motivated.php">4. Stay Motivated</a></li>		
+                            <li><a href="Exercise Daily.php">5. Exercise Daily</a></li>							
+							<li class="dropdown-header">Exercise</li>
+                            
+			<li>                  <a href="exerciseTools.php">Home Exercise Tools</a></li>
+				              <li>    <a href="exercise.php"> Exercise Videos</a></li>
+											
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">Things for Your Health Today</li>
+                           <li><a href="EatFruit.php">1.  Ditch the Juice, Eat the Fruit</a></li>
+						<li><a href="Socialize.php">2. Socialize</a></li>
+						<li><a href="Eatslowly.php">3. Eat slowly</a></li>
+						<li><a href="TakeTimeOff.php">4. Take Time Off</a></li>
+						<li><a href="WatchFat.php">5. Watch the Fat</a></li>
+						<li><a href="ManageStress.php">6.Manage Your Stress</a></li>						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">Exercise Tools</li>                            
+                            <div id="womenCollection" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                                <div class="item active">
+                                    <a href="#"><img src="pic/tool5.jpg" class="img-responsive" width="100%" height="150" alt="product 1"></a>
+                                    <h4><small>Adjustable Bench</small></h4>                                        
+                                    <button class="btn btn-primary" type="button">$79.99</button> <button href="#" class="btn btn-default" type="button"><i class="glyphicon glyphicon-earphone"></i> call@ 344556701</button>       
+                                </div><!-- End Item -->
+                                <div class="item">
+                                    <a href="#"><img src="pic/tool6.jpg" class="img-responsive" width="100%" height="150" alt="product 2"></a>
+                                    <h4><small>Upright Bike</small></h4>                                        
+                                    <button class="btn btn-primary" type="button">$249.99</button> <button href="#" class="btn btn-default" type="button"><i class="glyphicon glyphicon-earphone"></i> call@ 344556701</button>        
+                                </div><!-- End Item -->
+                                <div class="item">
+                                    <a href="#"><img src="pic/tool23.jpg" class="img-responsive" width="100%" height="150" alt="product 3"></a>
+                                    <h4><small>Printed Yoga Mat 1/2-inch (72”x24”) with Carrying Strap</small></h4>                                        
+                                    <button class="btn btn-primary" type="button">$17.56</button> <button href="#" class="btn btn-default" type="button"><i class="glyphicon glyphicon-earphone"></i> call@ 344556701</button>      
+                                </div><!-- End Item -->                                
+                              </div><!-- End Carousel Inner -->
+                              <!-- Controls -->
+                              <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="right carousel-control" href="#womenCollection" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div><!-- /.carousel -->
+                            <li class="divider"></li>
+                            <li><a href="showexer.php">View all Tools <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+						</ul>
+					</li>
+						</ul>
+					</li>
+			<li><a   href="showdoct.php" style="color: black; font-size:16px;"> Professionals</a></li>
+           	
+		</ul> 
+		</div><!-- /.nav-collapse -->
+</nav>
+	</div>
+
+
+
+	<div class="container-fluid" style="background-color:#f9f9f9; margin-left:3%;margin-right:3%;">
+	<div class="row">
+	
+
+       	 	<div class="col-lg-3 col-sm-3 col-sx-3 col-md-3" style="background-color:#f9f9f9;">
+	<h6  style=" background-color:#e4e4e4;border-left:4px solid #8CC640;padding:14px; text-align:center; idth:100%;"><b>stepToHealth Calculators</b></h6>
+<a href="calculator.php">	<h5  style=" background-color:white;padding:14px; text-align:center; color:#8CC640;"><u>Calorie Calculator</u></h5></a>
+<a href="bmi.php">	<h5  style=" background-color:white;padding:14px; text-align:center;"><u>Body Mass Index(BMI)</u></h5></a>
+<a href="heartrate.php">	<h5  style=" background-color:white;padding:14px; text-align:center;"><u>Heart Rate Calculator</u></h5></a>
+<a href="intensitycalculator.php">	<h5  style=" background-color:white;padding:14px; text-align:center;"><u>Measure Exercise Intensity</u></h5></a>
+	<a href="idealcalculator.php"><h5  style=" background-color:white;padding:14px; text-align:center;"><u>Ideal Body Weight(IBW)</u></h5></a>
+	
+	 <a href="weightloss2.php"><h5  style=" background-color:white;padding:14px; text-align:center;  "><u>Weight Loss</u></h5></a>
+	 <a href="login.php"><h5  style=" background-color:white;padding:14px; text-align:center;  "><u>User history</u></h5></a>
+	
+	</div>
+	
+	
+       	 	<div class="col-lg-8 col-sm-8 col-sx-8 col-md-8"  style=" background-color:white;margin-top:9px; margin-bottom:4%; ">
+			<div>
+            <h6 style=" background-color:#e4e4e4;border-left:4px solid #8CC640;padding:14px; text-align:center; idth:100%;"><b>stepToHealth (Calorie Calculator)</b></h6>
+<div style="background-color:white;  line-height: 1.6;">
+<h3>Calorie Calculator</h3>
+
+
+<p style="  line-height: 1.9; font-size:14px;">Calorie calculator is an online health & fitness tool for a user to set its goal to Gain or loss  weight. 
+
+</p>
+<p style="  line-height: 1.9; font-size:14px;">Usage Instructions
+
+
+</p>
+<p style="  line-height: 1.9; font-size:14px;">Are you trying to lose weight? This calculator will help you determine a daily caloric intake for your desired goal.<br>1.First input your health details including gender & height.<br>
+2.Then choose a daily activity level from the available pull-down menu. <br>
+3. Enter how much you'd like to lose and a time period that you would like to achieve your goal during.<br>
+4.Press CALCULATE, and you’ll see estimated calorie requirements for losing weight, as well as a number for maintaining.<br>
+</p>
+
+</div>
+		
+<form name="calc2"" action="idealcalculator.php" method="post" style="border:1px solid #e4e4e4;  " >
+   <div class="form-group row">
+				<label style=" background-color:#e4e4e4; height:30px;border-radius:12px; "><b>calorie calculator</b></label>
+				</div>
+<div class="form-group row">  
+
+    
+
+  
+  <table width="80%" style=" margin-left:12%;margin-top:2%; color:#3D366F;">
+ <tbody>
+ <tr>
+ <td >
+<b>Gender:</b>
+ </td>
+ <td align="center">
+ <select name="gender" size="1"  style="width: 80px; display:inline;" tabindex="1">
+ <option value="0"><b>Female</b></option>
+ <option value="1"><b>Male</b></option>
+ </select>
+ </td>
+ </tr>
+
+ <tr>
+ <td style="padding-top:13px;">
+<b>Age:</b>
+ </td>
+ <td align="center" style="padding-top:13px;">
+ <input type="number" name="age" size="15" value="40" style="width: 80px; display:inline;" />
+ </td>
+ </tr>
+
+ <tr>
+ <td style="padding-top:13px;">
+<b>Height:(cm)</b>
+ </td>
+ <td align="center" style="padding-top:13px;"><input type="number" step="any" name="inches" size="4" value="168"  style="width: 80px; display:inline;"  tabindex="4"/>
+ 
+ </td>
+ </tr>
+
+ <tr>
+ <td style="padding-top:13px;">
+<b>Weight(kg):</b>
+ </td>
+ <td align="center" style="padding-top:13px;">
+ <input type="number" name="weight"   step="any" size="15" value="70" min="18" max="80"  style="width: 80px; display:inline;"  tabindex="5"/> 
+
+ </td>
+ </tr>
+
+
+ <tr>
+ <td style="padding-top:13px;">
+<a href="bmi.php" target="_blank"><b>Body fat</a> % (optional):
+ </td>
+ <td align="center" style="padding-top:13px;">
+ <input type="number"  step="any" name="fatPerc" size="15" value="" /> %
+ </td>
+ </tr>
+
+ <tr>
+ <td colspan="2" style="padding-top:13px;">
+<b>Daily activity:</b>	
+ <select name="activityLevel" size="1"  style="width: 200px; display:inline; margin-left:48%; padding-top:13px;"  >
+ <option value="1.2">Desk job, little/no exercise
+ <option value="1.375">Light exercise 1-3 days/wk
+ <option value="1.55"> Moderate exercise 3-5 days/wk
+ <option value="1.725"> Hard exercise 6-7 days/wk
+ <option value="1.9"> Physical job & hard daily exercise
+ </select>
+ </td>
+ </tr>
+
+ <tr>
+ <td style="padding-top:13px;">
+ <font><b>Want to</b>
+ <select name="loseGain" size="1" style="width: 80px; display:inline;"  tabindex="8">
+ <option value="0">Lose</option>
+ <option value="1">Gain</option>
+ </select>: (kg)
+ <br>
+ (check <a href="idealcalculator.php" target="_blank">your ideal weight</a>) </font>
+ </td>
+ <td align="center" style="padding-top:13px;">
+ <input type="number"  step="any" name="pounds" size="15" value="5"  style="width: 80px; display:inline;"  tabindex="9"/> 
+ 
+ </td>
+ </tr>
+
+ <tr>
+ <td style="padding-top:13px;">
+ <font>
+ <select name="periodType" size="1" onChange="clear_results2(this.form);computeForm2(this.form)" style="width: 80px; display:inline;"  tabindex="10">
+ <option value="1">Days</option>
+ <option value="7">Weeks</option>
+ <option value="30.4" selected>Months</option>
+ <option value="365">Years</option>
+ </select>
+ to achieve goal:</font>
+ </td>
+ <td align="center" style="padding-top:13px;">
+ <input type="number"  step="any" name="periodNum" size="15" value="3"  style="width: 80px; display:inline;"  tabindex="11"/>
+ </td>
+ </tr>
+
+
+ <tr>
+ <td style="padding-top:13px;">
+ <input type="button" class="button-action button replace blue" value="Calculate" name="compute" onClick="computeForm2(this.form)"  style="background-color:#e4e4e4; border-radius:12px; padding:12px;box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);"/></p>
+
+ </td>
+ </tr>
+
+<tr>
+<td colspan="2">
+<h3>Daily Caloric Requirements</h3>
+</td>
+</tr>
+
+ <tr>
+ <td nowrap>
+Maintain Current Weight:
+ </td>
+ <td align="center">
+ <input type="text" name="tdee" size="15" style="width: 60px; display:inline;"  tabindex="13" />
+ </td>
+ </tr>
+
+ <tr>
+ <td nowrap>
+Meet Your Goal:
+ </td>
+ <td align="center">
+ <input type="text" name="newtdee" size="15" style="width: 60px; display:inline;"  tabindex="14" />
+ </td>
+ </tr>
+
+ <tr>
+ <td>
+<div class="breakadjust"> Maintain New Weight <br> (after reaching goal):</div>
+ </td>
+ <td align="center">
+ <input type="text" name="maintaintdee" size="15" style="width: 60px; display:inline;"  tabindex="15" />
+ </td>
+ </tr>
+ </tbody> </table>
+<blockquote id="summary2"></blockquote>
+ </form>		  <br>
+  <label style=" background-color:#e4e4e4; height:30px;border-radius:12px; "><b>Calories Lost by Sport, Activity, or Exercise</b></label>
+        
+         <p style="  line-height: 1.9; font-size:14px;">The table below shows the number of calories lost in one hour by people of varying weight classes.
+</p>
+<img src="pic/game.png" width="auto" class="img-fluid" alt="Responsive image" style="max-width: 100%; and height: auto; margin-bottom:4%; ">
+<img src="pic/game2.png" width="auto" class="img-fluid" alt="Responsive image" style="max-width: 100%; and height: auto; margin-bottom:4%;">
+ <label style=" background-color:#e4e4e4; height:30px;border-radius:12px; "><b>Calories Lost by Work, Activity or Hobby</b></label>
+        
+         <p style="  line-height: 1.9; font-size:14px;">The table below shows the number of calories lost in one hour by people of varying weight classes
+</p>
+<img src="pic/calorielos.png" width="auto" class="img-fluid" alt="Responsive image" style="max-width: 100%; and height: auto; margin-bottom:4%; ">
+<br><a href="mealplan.php"  style=" margin-top:6%;margin-left:30%;text-align:center; "><u>Get a Diet Plan</u></a>&
+<a href="showdoct.php"  style=" margin-top:6%;text-align:center;"><u>Need a consultant</u></a>
+ 
+          <div style="border:1px solid #e4e4e4; margin-top:4%; ">
+		  <label style=" background-color:#e4e4e4; height:30px;border-radius:12px; "><b>Losing Fat with the Calculator</b></label>
+        
+         <p style="  line-height: 1.9; font-size:14px;">One pound of fat equals 3,500 calories. This is an astonishing figure. Most experts suggest a calorie output of 500 daily in excess to what the body would expend in its normal condition, in order to ensure a weight loss of 1 lb a week. This figure sends many weight watchers to the gym to exercise away the required 500 calories. However, this is easier said than done. Most individuals find they do not lose weight, but remain constant, even with a daily calorie output of 500 or more. This is because weight loss becomes more and more difficult, the lighter an individual becomes. Weight loss is affected by many factors. For example, metabolism slows considerably after a certain age. This causes less burning of fat. This means an older person has to work harder and longer to burn 500 calories than it takes a much younger person. A 45 year old male, weighing 72 kilos with a height of 6 feet, exercising five days a week, must consume 1,922 calories a day. A 25 year old with the same height and weight and work out time can consume up to 2,039 calories while losing the same weight. The older people can ensure weight loss through a metabolism boost. Metabolism is boosted with cardio workouts, weight training, and occasional high-calorie meals. The calorie calculator helps identify the right number of calories required to lose weight in the proper manner.
+</p>
+ 
+
+<label style=" background-color:#e4e4e4; height:30px;border-radius:12px; "><b>Reference</b></label>
+        
+         <p style="  line-height: 1.9; font-size:14px;">The Daily Calories Calculator, is an extend calculator of BMR calculator(Basal Metabolic Rate Calculator). It uses the most popular formula, and can help to determine our daily calorie needs in a more precise way. This calculatorTakes into account body weight and height, age, gender, and exercise level.
+</p>
+<img src="pic/exerlevel.png" width="auto" class="img-fluid" alt="Responsive image" style="max-width: 100%; and height: auto; margin-left:30%;">
+
+<p style="  line-height: 1.9; font-size:20px;"><b>Formula</b></p>
+<img src="pic/cc.png" width="auto" class="img-fluid" alt="Responsive image" style="max-width: 100%; and height: auto; margin-bottom:4%;">
+	    
+        
+</div> 
+           
+</div>
+  
+</div>
+
+
+
+			</div>
+			</div>
+		<div class="center">
+  <div class="pagination" style="margin-left:40%;">
+    <a href="calculator.php">&laquo;</a>
+   
+    <a href="calculator.php" class="active">1</a>
+
+   
+   
+    <a  href="bmi.php">&raquo;</a>
+  </div>
+</div>	
+
+
+
+			
+	<!--Footer--> 
+		<div style=" margin-top:4%; background:linear-gradient(rgba(14, 14, 14,0.90),rgba(14, 14, 14,0.90)), url('pic/footer.jpg'); background-repeat:no-repeat;background-size:cover;">
+    
+	<div class="container" >
+    
+	  
+       
+	  <div class="row"  style=" background:transparent;text-align:center; border-top:1px solid white; margin-top:2%;">
+  
+	 <!--First column-->
+	 
+    <div class="col-lg-3 col-sm-3 col-sx-3 col-md-3  text-center ">
+                           <h6 class="text-uppercase font-weight-bold" style="color:#8CC640;"><strong>stepToHealth</strong></h6>
+                      <hr  style="width: 60px;">
+                      <p style="color:white; text-align:left;">stepToHealth provides you a better life style,make the facts appropiate that inspire your life.Here is a balance in your diet, your exercise and your health. We provide You a single platform where you can look all your health related necessities. </p>
+                      </div>
+                     
+      <!--/.First column-->
+      
+                  <!--Second column-->
+                  <div class="col-lg-3 col-sm-3 col-sx-3 col-md-3  stylish-color-dark" style="color:white;">
+                      <h6 class="text-uppercase font-weight-bold" style="color:#8CC640;"><strong>services</strong></h6>
+                      <hr style="width: 60px;color:#8CC640;">
+                      <p> <a href="recipes.php" style="color:white;">Recipes</a></p>
+                      <p><a href="exercise.php" style="color:white;">Exercise</a></p>
+                      <p><a href="foodinfo.php" style="color:white;">Food Information</a></p>
+                     
+                  </div>
+                  <!--/.Second column-->
+      
+                  <!--Third column-->
+                  <div class="col-lg-3 col-sm-3 col-sx-3 col-md-3 " >
+                      <h6 class="text-uppercase font-weight-bold mb-4 mt-3 " style="color:#8CC640;"><strong>Useful Calculators</strong></h6>
+                      <hr style="width: 60px;color:#8CC640;">
+                      <p><a href="calculator.php" style="color:white;">Calorie Calculator</a></p>
+                      <p><a href="bmi.php" style="color:white;">Body Mass Index(BMI)</a></p>
+                      <p><a href="Heartrate.php" style="color:white;">Heart Rate Calculator</a></p>
+                       <p><a href="weightloss.php" style="color:white;">Weight Loss Calculator</a></p>
+                      
+                  </div>
+                  <!--/.Third column-->
+      
+                  <!--Fourth column-->
+                  <div class="col-lg-3 col-sm-3 col-sx-3 col-md-3">
+                      <h6 class="text-uppercase font-weight-bold" style="color:#8CC640;"><strong>Contact</strong></h6>
+                      <hr  style="width: 60px;color:#8CC640;">
+                      <p style="color:white;"><span class="glyphicon glyphicon-phone-alt" style="color:#8CC640;"></span> &nbsp + 01 234 567 88</p>
+                      <p style="color:white;"><span class="	glyphicon glyphicon-envelope" style="color:#8CC640;"></span>&nbsp  + 01 234 567 89</p>
+					   <a href="https://plus.google.com/u/0/104419626603050691626">  <i class="fa fa-google-plus" style="font-size:20px;color:white;  margin-top:3%; margin-bottom:2%;"></i></a>
+<a href="https://www.facebook.com/SteptoHealth-287798741993019/?modal=admin_todo_tour"><i class="fa fa-facebook" style="font-size:20px;color:white; margin-left:4%;"></i></a>
+<a href="https://twitter.com/"><i class="fa fa-twitter" style="font-size:20px;color:white; margin-left:4%;"></i></a>
+<a href=" https://www.youtube.com/channel/UCJQgiVD2ra4i8tWhOCRyKyA?view_as=subscriber"><i class="fa fa-youtube" style="font-size:20px;color:white; margin-left:4%;"></i></a>
+ <a href="adminlogin.php"> <i class="fa fa-sign-in" style="font-size:19px;color:white; margin-left:4%; "></i></a>
+    
+                  </div>
+     
+	  
+      </div>
+    </div>
+	
+	
+	</div>
+        
+		
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" style=" margin-top:8%;">
+        <div class="modal-content">
+		<div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="color:#8CC640;">Calves</h4>
+        </div>
+    
+             <div class="modal-body">
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/cE1zOL0p2_s" frameborder="0" allowfullscreen></iframe>
+          
+        </div> 
+			 <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">  
+   $("#myModal").on("hidden.bs.modal", function(e) {
+  $("#myModal iframe").attr("src", $("#myModal iframe").attr("src"));
+});
+
+</script>
+   <script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery-3.1.0.js"></script>
+<script src="js/script.js"></script> 
+</body>
+</html>
